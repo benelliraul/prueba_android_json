@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Email">E-mail</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="Verificar_contraseña">Ingrese nuevamente su contraseña</string>
+    <string name="Direccion">Dirección</string>
+    <string name="Celular">Celular</string>
+    <string name="Selec_categoria">Seleccione una categoría</string>
+    <string name="Imagen">Seleccione una imágen</string>
+    <string name="Titulo">TuTiendaMovil</string>
+    <string-array name="Desplegable_categoria">
+        <item>Tienda de articulos varios</item>
+        <item>Alimentos y bebidas</item>
+        <item>Educación</item>
+        <item>Entretenimiento</item>
+        <item>Salud</item>
+        <item>Transporte</item>
+        <item>Vestimenta</item>
+
+    </string-array>
+    <string name="Boton_formulario">Registrarse</string>
+</resources>
