@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,19 +12,23 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +38,10 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+
+import javax.xml.transform.ErrorListener;
+
+import static com.example.myapplication.R.drawable.error;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,11 +53,16 @@ public class MainActivity extends AppCompatActivity {
         final TextView textView = (TextView) findViewById(R.id.text);
         final TextView textView_2 = (TextView) findViewById(R.id.text_view_array);
         final TextView nombre = (TextView) findViewById(R.id.nombre_dinamico);
+        final TextView ruta_imagen = (TextView) findViewById(R.id.ruta_imagen);
         final TextView json_object_2 = (TextView) findViewById(R.id.json_object);
+        final ImageView imagen_tienda = (ImageView) findViewById(R.id.imagen_tienda);
+        final String[] url_imagen = {""};
+        final MainActivity ctx = this;
         //se crea el request queue, volley maneja las solicitudes
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url_1 = "http://benelliraul.pythonanywhere.com/json_object";
+
 
         //solicitud a url_1, esperamos un jsonobject
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -83,8 +97,21 @@ public class MainActivity extends AppCompatActivity {
                         json_object_2.setText(response.toString());
                         try {//aca se accede al valor asociado a la clave
                             String valor = response.getString("nombre_tienda");
+                            //recupera la ruta de la imagen y la completa
+                            url_imagen[0] = "http://benelliraul.pythonanywhere.com"+response.getString( "imagen_portada_tienda");
                             //se coloca el nombre de la tienda en el textview nombre
                             nombre.setText(valor);
+                            //arregla unas cosas de la direccin
+                            final String url_img = url_imagen[0].replaceAll("\\\\","");
+                            ruta_imagen.setText(url_img);
+                            //pide la imagen y la asocia al textview
+                            Picasso.with(ctx)
+                                    .load(url_img)
+                                    .error(error)
+                                    .fit()
+                                    .centerInside()
+                                    .into(imagen_tienda);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -117,7 +144,11 @@ public class MainActivity extends AppCompatActivity {
         }
         );
         queue.add(arrayRequest);
+        final String url_4 = url_imagen[0].replaceAll("\\\\","");
+
+
+      }
     }
 
-    }
+
 
