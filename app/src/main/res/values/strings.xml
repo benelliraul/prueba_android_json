@@ -9,6 +9,8 @@
     <string name="Selec_categoria">Seleccione una categoría</string>
     <string name="Imagen">Seleccione una imágen</string>
     <string name="Titulo">TuTiendaMovil</string>
+    <string name="Inicio">Inicio</string>
+    <string name="Registro">Registro</string>
     <string-array name="Desplegable_categoria">
         <item>Tienda de articulos varios</item>
         <item>Alimentos y bebidas</item>
