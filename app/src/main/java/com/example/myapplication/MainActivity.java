@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         //se crea el request queue, volley maneja las solicitudes
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url_form="http://benelliraul.pythonanywhere.com/formulario_app";
+        String url_form="https://benelliraul.pythonanywhere.com/formulario_app";
         final String nombre_form= "nombre desde app";
         final String direccion_form= "direccion desde app";
         final String correo_form = "correo desde app";
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         queue.add(postRequest);
-        String url_1 = "http://benelliraul.pythonanywhere.com/json_object";
+        String url_1 = "https://benelliraul.pythonanywhere.com/json_object";
 
 
         //solicitud a url_1, esperamos un jsonobject
@@ -130,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest);
          */
 
-        String url_2 = "http://benelliraul.pythonanywhere.com/json_una_tienda";
+        String url_2 = "https://benelliraul.pythonanywhere.com/json_una_tienda";
         //se hace la peticion a la url_2, esperamos un jason_object de una tineda ( la 04)
         JsonObjectRequest jsonObjectRequest_2 = new JsonObjectRequest
-                (Request.Method.GET, url_2, (String) null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, url_2, new JSONObject(), new Response.Listener<JSONObject>() {
 
                     @Override
                     //se coloca la respuesta en el tercer textview
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                             String valor_4 = response.getString("direccion_tienda");
                             String valor_5 = response.getString("categoria_tienda");
                             //recupera la ruta de la imagen y la completa
-                            url_imagen[0] = "http://benelliraul.pythonanywhere.com"+response.getString( "imagen_portada_tienda");
+                            url_imagen[0] = "https://benelliraul.pythonanywhere.com"+response.getString( "imagen_portada_tienda");
                             //se coloca el nombre de la tienda en el textview nombre
                             nombre.setText(valor);
                             celular.setText(valor_2);

@@ -28,4 +28,23 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textSize="23sp"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <TextView
+        android:id="@+id/nombreView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="Ingrese nombre"
+        android:textSize="23sp"
+        app:layout_constraintStart_toEndOf="@+id/nombre"
+        tools:layout_editor_absoluteY="165dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
