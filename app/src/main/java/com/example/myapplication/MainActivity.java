@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         ) {
             @Override
+            //los datos que se envian al formulario, hay que hacerlo con las variables recuperadas del view
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
