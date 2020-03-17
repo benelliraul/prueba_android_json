@@ -22,4 +22,5 @@
 
     </string-array>
     <string name="Boton_formulario">Registrarse</string>
+    <string name="boton_login">iniciar session</string>
 </resources>

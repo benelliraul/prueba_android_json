@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".usuario_logeado">
     <ScrollView
         android:layout_width="409dp"
         android:layout_height="729dp"
@@ -43,8 +42,10 @@
             <ImageView
                 android:id="@+id/imagen_tienda"
                 android:layout_width="386dp"
-                android:layout_height="wrap_content"
+                android:layout_height="240dp"
+                android:contentDescription="IMAGEN DE LA TIENDA"
                 app:srcCompat="@drawable/cargando" />
+
             <TextView
                 android:id="@+id/direccion"
                 android:layout_width="match_parent"
@@ -95,4 +96,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

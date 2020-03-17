@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         final ImageView imagen_tienda = (ImageView) findViewById(R.id.imagen_tienda);
         final String[] url_imagen = {""};
         final MainActivity ctx = this;
+        SharedPreferences sharedPref = ctx.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
         //se crea el request queue, volley maneja las solicitudes
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -107,34 +111,10 @@ public class MainActivity extends AppCompatActivity {
         String url_1 = "http://benelliraul.pythonanywhere.com/json_object";
 
 
-        //solicitud a url_1, esperamos un jsonobject
-        /*
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url_1, (String) null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    //se coloca la respuesta en el primer text view
-                    public void onResponse(JSONObject response) {
-                        textView.setText(response.toString());
-
-                    }
-                }, new Response.ErrorListener() {
-            //manejo de errores ( no se que hace exactamente
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        textView.setText("Hubo algun error!!!");
-
-                    }
-                });
-        //se agrega la respuesta a la cola, para despues manejarla creo, pero no se bien como
-        queue.add(jsonObjectRequest);
-         */
-
         String url_2 = "http://benelliraul.pythonanywhere.com/json_una_tienda";
         //se hace la peticion a la url_2, esperamos un jason_object de una tineda ( la 04)
         JsonObjectRequest jsonObjectRequest_2 = new JsonObjectRequest
-                (Request.Method.GET, url_2, (String) null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, url_2, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     //se coloca la respuesta en el tercer textview
@@ -178,27 +158,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         queue.add(jsonObjectRequest_2);
-        /*
-        String url_3 = "http://benelliraul.pythonanywhere.com/json_array";
-        // se hace una peticion donde se espera recibir un json array
-        JsonArrayRequest arrayRequest = new JsonArrayRequest(
-                Request.Method.GET, url_3, (String) null, new Response.Listener<JSONArray>() {
-                    @Override
-            public void onResponse (JSONArray response){
-                        //se agrega el json al textview
-                        textView_2.setText(response.toString());
-                    }
-        }, new Response.ErrorListener(){
-                    @Override
-            public void onErrorResponse(VolleyError error){
-                        textView_2.setText("mas erroresssss!");
-                    }
-        }
-        );
-        queue.add(arrayRequest);
-        final String url_4 = url_imagen[0].replaceAll("\\\\","");
-
-         */
 
 
       }

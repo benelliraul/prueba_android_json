@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registro">
+    tools:context=".Registro"
+    tools:ignore="DuplicateIds">
 
     <Button
         android:id="@+id/ir_a_Inicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="44dp"
         android:onClick="inicio"
         android:text="@string/Inicio"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,11 +22,63 @@
         android:id="@+id/textView"
         android:layout_width="194dp"
         android:layout_height="36dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="32dp"
         android:text="@string/Titulo"
         android:textSize="@dimen/Tamaño_titulo"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/usuario_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:hint="@string/Email"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ir_a_Inicio" />
+
+    <EditText
+        android:id="@+id/contrasena_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/Contraseña"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textSize="@dimen/Tamaño_comun"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usuario_login" />
+
+    <Button
+        android:id="@+id/iniciar_sesion"
+        android:layout_width="190dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="68dp"
+        android:onClick="login"
+        android:text="@string/boton_login"
+        android:textSize="@dimen/Tamaño_comun"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contrasena_login" />
+
+    <Button
+        android:id="@+id/ir_a_logueado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="44dp"
+        android:onClick="usuario_log"
+        android:text="ver logueado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iniciar_sesion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
