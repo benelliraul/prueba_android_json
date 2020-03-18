@@ -92,6 +92,15 @@
                 android:onClick="registro_activity"
                 android:text="@string/Registro" />
 
+            <Button
+                android:id="@+id/ir_a_crear_tienda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="crear_tienda"
+                android:text="@string/Boton_formulario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
 
         </LinearLayout>
     </ScrollView>

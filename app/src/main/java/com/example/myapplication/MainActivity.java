@@ -164,6 +164,10 @@ public class MainActivity extends AppCompatActivity {
     public void registro_activity(View view){
         Intent cambiar = new Intent(this, Registro.class);startActivity(cambiar);
     }
+    public void crear_tienda (View view){
+        Intent crear_tienda = new Intent(this,Crear_tienda.class);
+        startActivity(crear_tienda);
+    }
     }
 
 

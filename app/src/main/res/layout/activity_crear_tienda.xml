@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Crear_tienda">
+
+    <TextView
+        android:id="@+id/Titulo_crear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Titulo"
+        android:textAlignment="center"
+        android:textSize="@dimen/Tamaño_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sub_titulo_crear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/Tamaño_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Titulo_crear" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="394dp"
+        android:layout_height="521dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sub_titulo_crear">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/Nombre_ingresado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:hint="@string/Nombre"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textSize="@dimen/Tamaño_comun" />
+
+            <EditText
+                android:id="@+id/Direccion_ingresada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/Direccion"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textSize="@dimen/Tamaño_comun"
+                android:importantForAutofill="no" />
+
+            <EditText
+                android:id="@+id/Telefono_ingresado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Celular"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:textAlignment="center"
+                android:textSize="@dimen/Tamaño_comun" />
+
+            <EditText
+                android:id="@+id/Correo_ingresado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:hint="@string/Email"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textSize="@dimen/Tamaño_comun" />
+
+            <EditText
+                android:id="@+id/Contrasena_ingresada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/Contraseña"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textSize="@dimen/Tamaño_comun" />
+
+            <ImageView
+                android:id="@+id/imagen_cargada"
+                android:layout_width="381dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imagen_a_cargar"
+                app:srcCompat="@drawable/cargando" />
+
+            <Button
+                android:id="@+id/Boton_seleccionar_imagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="@string/Boton_seleccionar_imagen" />
+
+            <Button
+                android:id="@+id/Boton_crear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="Envair_datos"
+                android:text="@string/Boton_formulario" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

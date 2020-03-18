@@ -23,4 +23,7 @@
     </string-array>
     <string name="Boton_formulario">Registrarse</string>
     <string name="boton_login">iniciar session</string>
+    <string name="Sub_titulo_crear">Ingrese los datos de su Tienda</string>
+    <string name="Boton_seleccionar_imagen">"Seleccionar imagen "</string>
+    <string name="imagen_a_cargar">cargando imagen</string>
 </resources>
