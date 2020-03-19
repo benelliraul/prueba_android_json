@@ -12,11 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Crear_tienda"></activity>
+        <activity android:name=".Visitante"></activity>
+        <activity android:name=".inicioActivity" />
+        <activity android:name=".addProducto_Activity" />
+        <activity android:name=".Crear_tienda" />
         <activity android:name=".usuario_logeado" />
         <activity android:name=".Registro" />
         <activity android:name=".MainActivity">
             <intent-filter>
+                <action android:name=".inicioActivity" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

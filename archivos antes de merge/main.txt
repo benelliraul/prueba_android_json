@@ -2,72 +2,61 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+
+import javax.xml.transform.ErrorListener;
 
 import static com.example.myapplication.R.drawable.error;
+import static com.example.myapplication.R.drawable.logo_tienda;
 
 public class MainActivity extends AppCompatActivity {
-    //<action android:name="android.intent.action.MAIN" />
+    MainActivity ctx = this;
     String id_actual ="";
-    @Override
-    public  void onRestart() {
-        super.onRestart();
-        evaluar_id();
-    }
-
-    private void evaluar_id() {
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
-        SharedPreferences.Editor editor = sharedPref.edit();
-        if (id_actual.equals("crear")){
-            ir_a_inicio(this.getCurrentFocus());
-
-        }else {
-            ir_a_logueado(this.getCurrentFocus());
-        }
-    }
+    SharedPreferences sharedPref = ctx.getSharedPreferences("teinda_logueada",MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPref.edit();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final MainActivity ctx = this;
-        ir_a_inicio(ctx.getCurrentFocus());
 
-        //String id_rec=sharedPref.getString("id_tienda", "no hay");
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String nombre_rec = sharedPref.getString("nombre","no hay");
-        String direccion_rec =sharedPref.getString("direccion","null");
-        String correo_rec=sharedPref.getString("correo","null");
-        String celular_rec=sharedPref.getString("celular","null");
-        String ruta_imagen=sharedPref.getString("imagen","null");
-        //Toast.makeText(this,"desde shared2"+celular_rec,Toast.LENGTH_LONG).show();
-        //Toast.makeText(this,"el nombre"+nombre_rec,Toast.LENGTH_LONG).show();
-        SharedPreferences.Editor editor = sharedPref.edit();
 
         //se relacionan los textview del xml al java
         final TextView direccion = (TextView) findViewById(R.id.direccion_dinamica);
@@ -96,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             nombre_estatico.setText("Perfil de ");
             boton_login.setText("Logout");
             boton_crear.setText("Agregar Producto");
-            String nombre_recu=sharedPref.getString("nombre","null");
-            nombre.setText(nombre_recu);
+            String nombre_rec=sharedPref.getString("nombre","null");
+            nombre.setText(nombre_rec);
             String url_img = sharedPref.getString("imagen","null");
             Picasso.with(ctx)
                     .load(url_img)
@@ -205,12 +194,7 @@ public class MainActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest_2);
 
 
-    }
-
-    private void ir_a_inicio(View view) {
-        Intent intent = new Intent(this,inicioActivity.class);
-        startActivity(intent);
-    }
+      }
 
     private void solicitar_tienda(String id_actual) {
         String url_login = "http://benelliraul.pythonanywhere.com/usuario_logueado_app"+id_actual.toString();
@@ -240,28 +224,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void registro_activity(View view){
         if(id_actual == "crea" || id_actual == "anonimo"){
+            editor.putString("id_tienda","crea");
+            editor.apply();
             Intent cambiar = new Intent(this, Registro.class);startActivity(cambiar);
             //clase registro es en realidad login iniciar sesion o logout
         }else{
-
-            cerrar_sesion();
+            editor.putString("nombre", "null");
+            editor.putString("celular", "null");
+            ;
+            editor.putString("correo", "null");
+            editor.putString("direccion", "null");
+            editor.putString("categoria", "null");
+            editor.putString("imagen", "null");
+            editor.putString("id_tienda","null");
+            editor.apply();
         }
     }
-
-    private void cerrar_sesion() {
-        SharedPreferences archivo = getSharedPreferences("teinda_logueada",getApplicationContext().MODE_PRIVATE);
-        SharedPreferences.Editor editor = archivo.edit();
-        editor.putString("nombre", "null");
-        editor.putString("celular", "null");
-        ;
-        editor.putString("correo", "null");
-        editor.putString("direccion", "null");
-        editor.putString("categoria", "null");
-        editor.putString("imagen", "null");
-        editor.putString("id_tienda","cerro la sesion");
-        editor.apply();
-    }
-
     public void crear_tienda (View view){
         if(id_actual== "crea" || id_actual=="anonimo"){
             Intent crear_tienda = new Intent(this,Crear_tienda.class);
@@ -269,12 +247,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void ir_a_logueado(View view){
-        Intent login = new Intent(this,Registro.class);
-        startActivity(login);
     }
-
-}
 
 
 

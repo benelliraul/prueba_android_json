@@ -26,4 +26,5 @@
     <string name="Sub_titulo_crear">Ingrese los datos de su Tienda</string>
     <string name="Boton_seleccionar_imagen">"Seleccionar imagen "</string>
     <string name="imagen_a_cargar">cargando imagen</string>
+    <string name="Nombre_inicial">Pone tu tienda en linea</string>
 </resources>

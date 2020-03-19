@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,19 +26,20 @@ public class usuario_logeado extends AppCompatActivity {
         final TextView celular = (TextView) findViewById(R.id.celular_dinamico);
         final ImageView imagen_tienda = (ImageView) findViewById(R.id.imagen_tienda);
         final usuario_logeado ctx = this;
-
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
+        //SharedPreferences sharedPref = ctx.getPreferences(Context.MODE_PRIVATE);
+        //SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences sharedPref = ctx.getSharedPreferences("teinda_logueada",MODE_PRIVATE);
         String nombre_rec=sharedPref.getString("nombre","null");
         String direccion_rec =sharedPref.getString("direccion","null");
         String correo_rec=sharedPref.getString("correo","null");
         String celular_rec=sharedPref.getString("celular","null");
         String ruta_imagen=sharedPref.getString("imagen","null");
-        //Toast.makeText(this,"desde shared2"+celular_rec,Toast.LENGTH_LONG).show();
         String categoria_rec=sharedPref.getString("categoria","null");
         nombre.setText(nombre_rec);
         direccion.setText(direccion_rec);
         correo.setText(correo_rec);
         celular.setText(celular_rec);
+        Toast.makeText(ctx, ruta_imagen, Toast.LENGTH_LONG).show();
         Picasso.with(usuario_logeado.this)
                 .load(ruta_imagen)
                 .error(error)
@@ -49,7 +49,4 @@ public class usuario_logeado extends AppCompatActivity {
 
     }
 
-    public void registro_activity(View view) {
-        //todo
-    }
 }
