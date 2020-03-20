@@ -121,6 +121,20 @@ public class Registro extends AppCompatActivity {
         );
 
     }
+    @Override
+    public void onRestart() {
+
+        super.onRestart();
+        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
+        String id_actual = sharedPref.getString("id_tienda","crear");
+        if(id_actual.equals("crear")){
+            Intent reiniciar = new Intent(this,this.getClass());
+            startActivity(reiniciar);
+
+        }else{ir_a_inico(Registro.this.getCurrentFocus());
+
+        }
+    }
 
     private void ir_a_inico(View view) {
         Intent intetn = new Intent (this,inicioActivity.class);

@@ -57,7 +57,6 @@ public class addProducto_Activity extends AppCompatActivity {
         final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
         final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
 
-        final String[] url_imagen = {""};
 
         botonEnviarProducto.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,13 +70,14 @@ public class addProducto_Activity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 Toast.makeText(ctx, "Creando nuevo producto", Toast.LENGTH_SHORT).show();
+                                ir_logueado(ctx.getCurrentFocus());
                             }
                         },
                         new Response.ErrorListener()
                         {
                             @Override
                             public void onErrorResponse(VolleyError errorr) {
-                                Toast.makeText(ctx, "Error al crear producto "+ errorr, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ctx, "Error, la imagen supera los 100 mb", Toast.LENGTH_SHORT).show();
                             }
                         }) {
                     @Override
@@ -130,5 +130,8 @@ public class addProducto_Activity extends AppCompatActivity {
 
         return imagenStrin;
     }
-
+    public void ir_logueado(View viewv){
+        Intent logueado = new Intent(this,usuario_logeado.class);
+        startActivity(logueado);
+    }
 }

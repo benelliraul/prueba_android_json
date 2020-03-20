@@ -24,13 +24,6 @@
                 android:text="@string/Titulo"
                 android:textAlignment="center"
                 android:textSize="@dimen/Tamaño_titulo" />
-            <TextView
-                android:id="@+id/nombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Nombre"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
 
             <TextView
                 android:id="@+id/nombre_dinamico"
@@ -41,44 +34,25 @@
 
             <ImageView
                 android:id="@+id/imagen_tienda"
-                android:layout_width="386dp"
-                android:layout_height="240dp"
+                android:layout_width="212dp"
+                android:layout_height="158dp"
                 android:contentDescription="IMAGEN DE LA TIENDA"
                 app:srcCompat="@drawable/cargando" />
 
-            <TextView
-                android:id="@+id/direccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Direccion"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
             <TextView
                 android:id="@+id/direccion_dinamica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/Tamaño_titulo" />
-            <TextView
-                android:id="@+id/correo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Email"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
+
             <TextView
                 android:id="@+id/correo_dinamico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/Tamaño_titulo" />
-            <TextView
-                android:id="@+id/celular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Celular"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
+
             <TextView
                 android:id="@+id/celular_dinamico"
                 android:layout_width="match_parent"
