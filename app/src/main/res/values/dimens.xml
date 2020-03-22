@@ -2,4 +2,5 @@
 <resources>
     <dimen name="Tamaño_titulo">24sp</dimen>
     <dimen name="Tamaño_comun">18sp</dimen>
+    <dimen name="altura_contenedor_tienda">112dp</dimen>
 </resources>

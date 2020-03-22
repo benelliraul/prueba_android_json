@@ -5,10 +5,19 @@ public class Tiendas {
     private String direccion;
     private String celular;
     private String correo;
-    private String id;
+    private String id;//podria ser conveniente que sea un numero
     private String categoria;
-    private int latitud;
+    private String ruta_imagen;
+    private int latitud;//qizas hay que cambiar el tipo a floa u otro
     private int longiitu;
+
+    public String getRuta_imagen() {
+        return ruta_imagen;
+    }
+
+    public void setRuta_imagen(String ruta_imagen) {
+        this.ruta_imagen = ruta_imagen;
+    }
 
     public String getNombre() {
         return nombre;
@@ -74,13 +83,14 @@ public class Tiendas {
         this.longiitu = longiitu;
     }
 
-    public Tiendas(String nombre, String direccion, String celular, String correo, String id, String categoria, int latitud, int longiitu) {
+    public Tiendas(String nombre, String direccion, String celular, String correo, String id, String categoria, String ruta_imagen, int latitud, int longiitu) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.celular = celular;
         this.correo = correo;
         this.id = id;
         this.categoria = categoria;
+        this.ruta_imagen = ruta_imagen;
         this.latitud = latitud;
         this.longiitu = longiitu;
     }
