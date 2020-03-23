@@ -10,9 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/holo_blue_light"
+        app:cardCornerRadius="28dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="12dp"
         app:contentPadding="2dp">
 
         <LinearLayout
@@ -25,7 +26,7 @@
                 android:layout_width="235dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                android:background="@android:color/holo_blue_dark"
                 app:srcCompat="@drawable/logo_tienda" />
 
             <View
@@ -43,7 +44,7 @@
 
                 <TextView
                     android:id="@+id/nombre_tienda"
-                    android:layout_width="175dp"
+                    android:layout_width="237dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textAlignment="center"
@@ -51,28 +52,28 @@
 
                 <TextView
                     android:id="@+id/correo_tienda"
-                    android:layout_width="175dp"
+                    android:layout_width="237dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/celular_tienda"
-                    android:layout_width="175dp"
+                    android:layout_width="239dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/direccion_tienda"
-                    android:layout_width="175dp"
+                    android:layout_width="241dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/categoria_tienda"
-                    android:layout_width="175dp"
+                    android:layout_width="237dp"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textAlignment="center" />

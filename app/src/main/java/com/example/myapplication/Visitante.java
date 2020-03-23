@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -90,5 +92,13 @@ public class Visitante extends AppCompatActivity {
 
         Adaptador_tiendas mAdapter = new Adaptador_tiendas(datastet,ctx);
         recyclerView.setAdapter(mAdapter);
+    }
+    public void ir_a_localizacion (View view){
+        Intent localizacion = new Intent(this, Localizar.class);
+        startActivity(localizacion);
+    }
+    public void ir_a_logueado(View view){
+        Intent login = new Intent(this,Registro.class);
+        startActivity(login);
     }
 }
