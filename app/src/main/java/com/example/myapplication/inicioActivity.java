@@ -83,7 +83,7 @@ public class inicioActivity extends AppCompatActivity {
 
     /* Boton visitante */
     public void Visitante(View view){
-        Intent cambiarn = new Intent(this, Visitante.class);
+        Intent cambiarn = new Intent(this, Visitante_inicio.class);
         startActivity(cambiarn);
     }
     public void ir_a_logueado (View view){

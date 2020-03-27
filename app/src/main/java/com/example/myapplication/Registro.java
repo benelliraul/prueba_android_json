@@ -74,6 +74,8 @@ public class Registro extends AppCompatActivity {
                             String direccion_tienda = response.getString("direccion_tienda");
                             String categoria_tienda = response.getString("categoria_tienda");
                             String id_tienda = response.getString("id_tienda");
+
+
                             String url_imagen = "http://benelliraul.pythonanywhere.com" + response.getString("imagen_portada_tienda");
                             Toast.makeText(Registro.this, response.getString("correo_electronico"), Toast.LENGTH_LONG).show();
                             final String url_img = url_imagen.replaceAll("\\\\", "");

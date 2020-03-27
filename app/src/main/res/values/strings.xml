@@ -27,4 +27,9 @@
     <string name="Boton_seleccionar_imagen">"Seleccionar imagen "</string>
     <string name="imagen_a_cargar">cargando imagen</string>
     <string name="Nombre_inicial">Pone tu tienda en linea</string>
+    <string name="Btn_ver_todas">Ver todas las tiendas</string>
+    <string name="buscar_por_contenido">"Buscar "</string>
+    <string name="buscar_cercanas">Buscar tiendas cerca</string>
+    <string name="hint_buscar">Buscar tiendas que coincidan con...</string>
+    <string name="sub_t_buscar_cerca">Buscar tiendas en un rango de ...</string>
 </resources>

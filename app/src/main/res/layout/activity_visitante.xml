@@ -24,13 +24,13 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/texto_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/texto_2"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:text="TextView" />
@@ -53,7 +53,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:onClick="ir_a_logueado"
+                            android:onClick="ir_a_loca_2"
                             android:text="Button" />
                     </LinearLayout>
 

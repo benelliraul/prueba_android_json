@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -28,6 +30,9 @@ public class Visitante extends AppCompatActivity {
     private Adaptador_tiendas adaptador_tiendas;
     private RecyclerView.LayoutManager layoutManager;
     public Visitante ctx = Visitante.this;
+    public TextView texto_1;
+    public TextView texto_2;
+
     final String url = "https://benelliraul.pythonanywhere.com/lista_productos/30";
     final String url_tiendas = "https://benelliraul.pythonanywhere.com/visitantes_app";
     public String clase = "tienda";
@@ -42,6 +47,16 @@ public class Visitante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitante);
         final ArrayList<Tiendas> mDataset = new ArrayList<>();
+        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
+        String id_actual =sharedPref.getString("id_tienda","null");
+        String longitud = sharedPref.getString("longitud_usuario","no se che");
+        String valor = getIntent().getExtras().getString("url","no llego nada");
+        Toast.makeText(ctx, valor, Toast.LENGTH_LONG).show();
+        texto_1 = (TextView) findViewById(R.id.texto_1);
+        texto_2 = (TextView) findViewById(R.id.texto_2);
+        texto_1.setText(id_actual);
+        texto_2.setText(longitud);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         //recyclerView.setHasFixedSize(true);
@@ -100,5 +115,9 @@ public class Visitante extends AppCompatActivity {
     public void ir_a_logueado(View view){
         Intent login = new Intent(this,Registro.class);
         startActivity(login);
+    }
+    public void ir_a_loca_2 (View view){
+        Intent locali = new Intent(this,buscr_ubucacion.class);
+        startActivity(locali);
     }
 }

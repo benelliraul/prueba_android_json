@@ -2,14 +2,27 @@ package com.example.myapplication;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,7 +33,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
@@ -28,6 +40,8 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import static com.example.myapplication.R.drawable.error;
@@ -40,6 +54,11 @@ public class Crear_tienda extends AppCompatActivity {
     EditText celular;
     EditText contrasena;
     Bitmap bitmap;
+    Crear_tienda ctx = this;
+    boolean b = true;
+    Double latitud_actual;
+    Double longitud_actual;
+    Boolean estado = new Boolean(b);
 
 
     @Override
@@ -47,14 +66,139 @@ public class Crear_tienda extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_tienda);
         imagen = (ImageView) findViewById(R.id.imagen_cargada);
+        latitud_actual =0.0;
+        longitud_actual=0.0;
         nombre = (EditText) findViewById(R.id.Nombre_ingresado);
         direccion = (EditText)findViewById(R.id.Direccion_ingresada);
         celular = (EditText)findViewById(R.id.Telefono_ingresado);
         correo = (EditText)findViewById(R.id.Correo_ingresado);
         contrasena = (EditText)findViewById(R.id.Contrasena_ingresada);
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
+        } else {
+            locationStart();
+        }
+
 
     }
+    public void registrar_lat_long(Location loc){
+        latitud_actual=loc.getLatitude();
+        longitud_actual=loc.getLongitude();
+        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada", ctx.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Double latitud= loc.getLatitude();
+        Double longitud = loc.getLongitude();
+        editor.putString("latitud_usuario", latitud.toString());
+        editor.putString("longitud_usuario", longitud.toString());
+        editor.apply();
+        editor.commit();
+    }
+    public boolean cambiar(boolean bol){
+        if (!bol) {bol=true;
+        }
+        return bol;
+    }
+    private void locationStart() {
+        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Crear_tienda.Localizacion Local = new Crear_tienda.Localizacion();
+        Looper looper = null;
+
+
+        Local.setMainActivity(this);
+        final boolean gpsEnabled = mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!gpsEnabled) {
+            Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(settingsIntent);
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
+            return;
+        }
+        mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) Local,looper);
+        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) Local,looper);
+        //mensaje1.setText("Localización agregada");
+        //mensaje2.setText("");
+    }
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 1000) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                locationStart();
+                return;
+            }
+        }
+    }
+    public void setLocation(Location loc) {
+        //Obtener la direccion de la calle a partir de la latitud y la longitud
+        if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+            try {
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                List<Address> list = geocoder.getFromLocation(
+                        loc.getLatitude(), loc.getLongitude(), 1);
+                if (!list.isEmpty()) {
+                    Address DirCalle = list.get(0);
+                    //mensaje2.setText("Mi direccion es: \n"
+                            //+ DirCalle.getAddressLine(0));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    /* Aqui empieza la Clase Localizacion */
+    public class Localizacion implements LocationListener {
+        Crear_tienda localizar;
+        public Crear_tienda getMainActivity() {
+            return localizar;
+        }
+        public void setMainActivity(Crear_tienda localizar) {
+            this.localizar = localizar;
+        }
+        @Override
+        public void onLocationChanged(Location loc) {
+            localizar.getApplicationContext();
+            // Este metodo se ejecuta cada vez que el GPS recibe nuevas coordenadas
+            // debido a la deteccion de un cambio de ubicacion
+
+            String Text = "Mi ubicacion actual es: " + "\n Lat = "
+                    + loc.getLatitude() + "\n Long = " + loc.getLongitude();
+
+            registrar_lat_long(loc);
+
+            //guardar_datos(latitud.toString(),longitud.toString());
+            //Toast.makeText(Localizar.this, "lat: " + latitud.toString(), Toast.LENGTH_LONG).show();
+
+            //mensaje1.setText(Text);
+            estado = cambiar(estado);
+            this.localizar.setLocation(loc);
+        }
+        @Override
+        public void onProviderDisabled(String provider) {
+            // Este metodo se ejecuta cuando el GPS es desactivado
+            //mensaje1.setText("Obteniendo datos de GPS....");
+        }
+        @Override
+        public void onProviderEnabled(String provider) {
+            // Este metodo se ejecuta cuando el GPS es activado
+            //mensaje1.setText("GPS Activado");
+        }
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            switch (status) {
+                case LocationProvider.AVAILABLE:
+                    Log.d("debug", "LocationProvider.AVAILABLE");
+                    break;
+                case LocationProvider.OUT_OF_SERVICE:
+                    Log.d("debug", "LocationProvider.OUT_OF_SERVICE");
+                    break;
+                case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                    Log.d("debug", "LocationProvider.TEMPORARILY_UNAVAILABLE");
+                    break;
+            }
+        }
+    }
+
+
 
     public void onClick(View view) {
         cargar_imagen();
@@ -86,7 +230,25 @@ public class Crear_tienda extends AppCompatActivity {
         }
     }
 
-    public void Envair_datos(View view){Envair_los_datos();}
+    public void Envair_datos(View view){
+        if (latitud_actual != 0.0){Envair_los_datos();
+            Toast.makeText(ctx, "se estan enviando los datos", Toast.LENGTH_SHORT).show();
+        }else {
+            intentar_enviar();
+        }
+    }
+    public void intentar_enviar(){
+        if (latitud_actual != 0.0){Envair_los_datos();
+            Toast.makeText(ctx, "se estan enviando los datos", Toast.LENGTH_SHORT).show();
+        }else {
+            try {
+                Toast.makeText(ctx, "Aún no se recibieron los datos de localizacion de su tienda, lo intentaremom nuevamente en 5 segundos", Toast.LENGTH_LONG).show();
+                Thread.sleep(3000);
+                intentar_enviar();
+            } catch (InterruptedException e) {
+                Toast.makeText(ctx, "Ocurrió un error", Toast.LENGTH_SHORT).show();
+            }
+        }    }
 
     private void Envair_los_datos() {
         if(nombre.getText()!=null && direccion.getText() != null && celular != null && correo != null && contrasena != null){
@@ -106,6 +268,7 @@ public class Crear_tienda extends AppCompatActivity {
             {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
+                    SharedPreferences sharedPref = getSharedPreferences("teinda_logueada", ctx.MODE_PRIVATE);
                     String nombre_nuevo = nombre.getText().toString();
                     String direccion_nueva = direccion.getText().toString();
                     String celular_nuevo = celular.getText().toString();
@@ -120,6 +283,9 @@ public class Crear_tienda extends AppCompatActivity {
                     parametros.put("correo",correo_nuevo);
                     parametros.put("contrasena",contrasena_nueva);
                     parametros.put("imagen_b64",imagen_nueva);
+                    parametros.put("latitud",latitud_actual.toString());
+                    parametros.put("longitud",longitud_actual.toString());
+
 
                     return parametros;
                 }
@@ -139,7 +305,5 @@ public class Crear_tienda extends AppCompatActivity {
         return imagenStrin;
     }
 
-    {
 
-    }
 }
