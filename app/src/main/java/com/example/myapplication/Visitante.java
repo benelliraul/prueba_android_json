@@ -34,10 +34,14 @@ public class Visitante extends AppCompatActivity {
     public TextView texto_2;
 
     final String url = "https://benelliraul.pythonanywhere.com/lista_productos/30";
-    final String url_tiendas = "https://benelliraul.pythonanywhere.com/visitantes_app";
+    String url_tiendas = "https://benelliraul.pythonanywhere.com/visitantes_app";
     public String clase = "tienda";
-
-
+    String valor;
+    @Override
+    public  void onRestart() {
+        super.onRestart();
+        direccion();
+    }
 
 
     //private  MyAdapter  mi_adapter ;
@@ -50,7 +54,7 @@ public class Visitante extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","null");
         String longitud = sharedPref.getString("longitud_usuario","no se che");
-        String valor = getIntent().getExtras().getString("url","no llego nada");
+        valor = getIntent().getExtras().getString("url","no");
         Toast.makeText(ctx, valor, Toast.LENGTH_LONG).show();
         texto_1 = (TextView) findViewById(R.id.texto_1);
         texto_2 = (TextView) findViewById(R.id.texto_2);
@@ -101,6 +105,11 @@ public class Visitante extends AppCompatActivity {
         queue.add(request);
 
 
+    }
+    public void direccion(){
+        if (valor != "no"){
+            url_tiendas=valor;
+        }
     }
 
     private void iniciar_vista(ArrayList<Tiendas> datastet) {

@@ -87,6 +87,10 @@ public class Localizar extends AppCompatActivity {
             }
         }
     }
+    public void finalizar(){
+        ctx.finish();
+
+    }
     public void setLocation(Location loc) {
         //Obtener la direccion de la calle a partir de la latitud y la longitud
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
@@ -125,7 +129,7 @@ public class Localizar extends AppCompatActivity {
             String Text = "Mi ubicacion actual es: " + "\n Lat = "
                     + loc.getLatitude() + "\n Long = " + loc.getLongitude();
             editor.putString("latitud_usuario", latitud.toString());
-            editor.putString("longitud_usuario", longitud.toString());
+            editor.putString("latitud_usuario", longitud.toString());
             editor.apply();
             editor.commit();
             //guardar_datos(latitud.toString(),longitud.toString());
@@ -133,6 +137,7 @@ public class Localizar extends AppCompatActivity {
 
             mensaje1.setText(Text);
             this.localizar.setLocation(loc);
+            finalizar();
         }
         @Override
         public void onProviderDisabled(String provider) {
