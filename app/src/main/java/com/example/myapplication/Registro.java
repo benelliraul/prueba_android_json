@@ -45,7 +45,7 @@ public class Registro extends AppCompatActivity {
             public void onClick(View view) {
                 final RequestQueue queue = Volley.newRequestQueue(Registro.this);
 
-                String url_login = "http://benelliraul.pythonanywhere.com/usuario_app";
+                String url_login = "https://benelliraul.pythonanywhere.com/usuario_app";
                 final EditText nombre_ingresado = (EditText) findViewById(R.id.usuario_login);
                 final EditText contrasena_ingresada = (EditText) findViewById(R.id.contrasena_login);
                 final String nombre = nombre_ingresado.getText().toString();
@@ -76,7 +76,7 @@ public class Registro extends AppCompatActivity {
                             String id_tienda = response.getString("id_tienda");
 
 
-                            String url_imagen = "http://benelliraul.pythonanywhere.com" + response.getString("imagen_portada_tienda");
+                            String url_imagen = "https://benelliraul.pythonanywhere.com" + response.getString("imagen_portada_tienda");
                             Toast.makeText(Registro.this, response.getString("correo_electronico"), Toast.LENGTH_LONG).show();
                             final String url_img = url_imagen.replaceAll("\\\\", "");
                             editor.putString("nombre", nombre_tienda);

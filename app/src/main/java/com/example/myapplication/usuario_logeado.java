@@ -46,10 +46,10 @@ public class usuario_logeado extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        final String url = "https://benelliraul.pythonanywhere.com/lista_productos/";
 
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","null");
+        final String url = "https://benelliraul.pythonanywhere.com/lista_productos/"+id_actual;
         String nombre_rec=sharedPref.getString("nombre","null");
         String direccion_rec =sharedPref.getString("direccion","null");
         String correo_rec=sharedPref.getString("correo","null");
@@ -90,7 +90,7 @@ public class usuario_logeado extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
+        });queue.add(request);
 
 
     }
