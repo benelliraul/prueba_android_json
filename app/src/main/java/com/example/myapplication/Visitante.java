@@ -34,13 +34,14 @@ public class Visitante extends AppCompatActivity {
 
     final String url = "https://benelliraul.pythonanywhere.com/lista_productos/30";
     String url_tiendas = "https://benelliraul.pythonanywhere.com/visitantes_app";
-    public String clase = "tienda";
+    //public String clase = "tienda";
     String valor;
-    @Override
+    /*@Override
     public  void onRestart() {
         super.onRestart();
-        direccion();
+        //direccion();
     }
+     */
 
 
     //private  MyAdapter  mi_adapter ;
@@ -54,6 +55,7 @@ public class Visitante extends AppCompatActivity {
         String id_actual =sharedPref.getString("id_tienda","null");
         String longitud = sharedPref.getString("longitud_usuario","no se che");
         valor = getIntent().getExtras().getString("url","no");
+        direccion();
         texto_1 = (TextView) findViewById(R.id.texto_1);
         texto_2 = (TextView) findViewById(R.id.texto_2);
         //texto_1.setText(id_actual);
@@ -107,7 +109,7 @@ public class Visitante extends AppCompatActivity {
     public void direccion(){
         if (valor != "no"){
             url_tiendas=valor;
-        }
+        }else url_tiendas = "https://benelliraul.pythonanywhere.com/visitantes_app";
     }
 
     private void iniciar_vista(ArrayList<Tiendas> datastet) {

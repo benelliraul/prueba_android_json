@@ -23,7 +23,9 @@ public class Visitante_inicio extends AppCompatActivity {
     }
     public void ver_todas_tiendas (View view){
         Intent ver_todas = new Intent(this,Visitante.class);
+        ver_todas.putExtra("url","https://benelliraul.pythonanywhere.com/visitantes_app");
         startActivity(ver_todas);
+
     }
     public void registrarse_desde_visitante (View view){
         Intent registrarse = new Intent (this,Crear_tienda.class);
