@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 public class Visitante extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private MyAdapter mAdapter;
     private Adaptador_tiendas adaptador_tiendas;
     private RecyclerView.LayoutManager layoutManager;
     public Visitante ctx = Visitante.this;

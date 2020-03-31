@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/btn_invitado"
-        android:layout_width="124dp"
-        android:layout_height="49dp"
+        android:layout_width="170dp"
+        android:layout_height="65dp"
         android:layout_marginTop="40dp"
         android:onClick="Visitante"
         android:text="Soy invitado"
@@ -33,8 +33,8 @@
 
     <Button
         android:id="@+id/boton_registro"
-        android:layout_width="123dp"
-        android:layout_height="48dp"
+        android:layout_width="170dp"
+        android:layout_height="65dp"
         android:layout_marginTop="28dp"
         android:onClick="crear_tienda"
         android:text="Registrarme"
@@ -45,9 +45,9 @@
 
     <Button
         android:id="@+id/iniciar_sesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="170dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="28dp"
         android:onClick="iniciarSesion_activity"
         android:text="Iniciar sesion"
         app:layout_constraintEnd_toEndOf="parent"
