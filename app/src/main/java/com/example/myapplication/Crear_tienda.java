@@ -219,8 +219,7 @@ public class Crear_tienda extends AppCompatActivity {
             Uri path =data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
-            } catch (IOException e) {
-                bitmap= Bitmap.createBitmap(imagen.getDrawingCache());//si no funciona hay que borrar esta linea
+            } catch (IOException e){
                 e.printStackTrace();
             }
             Picasso.with(Crear_tienda.this)
