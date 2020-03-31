@@ -56,7 +56,7 @@ public class Localizar extends AppCompatActivity {
         editor.putString("longitud_usuario", dos);
         editor.apply();
         editor.commit();
-        Toast.makeText(this, "aca llegó"+uno, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "aca llegó"+uno, Toast.LENGTH_LONG).show();
     }
     private void locationStart() {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

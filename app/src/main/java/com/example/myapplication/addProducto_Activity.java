@@ -35,6 +35,15 @@ import static com.example.myapplication.R.drawable.error;
 public class addProducto_Activity extends AppCompatActivity {
     ImageView imagen_producto;
     Bitmap bitmap;
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        limpiar();
+        //onCreate();
+    }
+    final TextView nombreProducto = (TextView) findViewById(R.id.nombre_editar);
+    final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
+    final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +62,9 @@ public class addProducto_Activity extends AppCompatActivity {
         botonEnviarProducto =  (Button) findViewById(R.id.enviarNuevoProducto);
         botonCancelar = (Button) findViewById(R.id.cancelarEnviarProd);
 
-        final TextView nombreProducto = (TextView) findViewById(R.id.nom_nuevo_producto);
-        final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
-        final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
+        //final TextView nombreProducto = (TextView) findViewById(R.id.nombre_editar);
+        //final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
+        //final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
 
 
         botonEnviarProducto.setOnClickListener(new View.OnClickListener(){
@@ -97,6 +106,7 @@ public class addProducto_Activity extends AppCompatActivity {
         });
     }
 
+
     public void cargar(View viev){cargar_imagen();}
 
     private void cargar_imagen() {
@@ -121,6 +131,12 @@ public class addProducto_Activity extends AppCompatActivity {
                     .centerInside()
                     .into(imagen_producto);
         }
+    }
+    public void limpiar(){
+        nombreProducto.setText("");
+        descripcionNuevoProducto.setText("");
+        precioProducto.setText("");
+        imagen_producto.setImageResource(R.drawable.cargando);
     }
     private String convertir_img_string(Bitmap bitmap) {
         ByteArrayOutputStream array = new ByteArrayOutputStream();

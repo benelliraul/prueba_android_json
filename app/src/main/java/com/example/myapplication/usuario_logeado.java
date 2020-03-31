@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -99,6 +100,7 @@ public class usuario_logeado extends AppCompatActivity {
     }
 
     public void registro_activity(View view) {
-        //todo
+        Intent agregar_prod = new Intent(this,addProducto_Activity.class);
+        startActivity(agregar_prod);
     }
 }

@@ -26,14 +26,14 @@
                     <TextView
                         android:id="@+id/texto_1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:layout_height="40dp"
+                        android:text="@string/Titulo"
+                        android:textAlignment="center" />
 
                     <TextView
                         android:id="@+id/texto_2"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:text="TextView" />
+                        android:layout_height="wrap_content" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -43,10 +43,10 @@
                         <Button
                             android:id="@+id/button2"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:onClick="ir_a_localizacion"
-                            android:text="Ver localizacion" />
+                            android:text="Volver" />
 
                         <Button
                             android:id="@+id/button"
@@ -54,7 +54,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:onClick="ir_a_loca_2"
-                            android:text="Button" />
+                            android:text="Crear Tienda" />
                     </LinearLayout>
 
                 </LinearLayout>

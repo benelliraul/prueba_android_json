@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/nombre_editar"
-        android:layout_width="276dp"
-        android:layout_height="38dp"
+        android:layout_width="278dp"
+        android:layout_height="77dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Nombre del nuevo producto"
@@ -46,7 +46,7 @@
         android:id="@+id/cargaP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="Edita tu producto"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
     <EditText
         android:id="@+id/descripcionNuevoProd"
         android:layout_width="221dp"
-        android:layout_height="98dp"
+        android:layout_height="82dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Descripcion del producto"

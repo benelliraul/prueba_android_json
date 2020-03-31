@@ -24,11 +24,9 @@ public class inicioActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
 
         if (id_actual.equals("crear")){
-            Toast.makeText(ctx,"desde inicio"+id_actual,Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx,"Bienvenido!!",Toast.LENGTH_LONG).show();
 
         }else {
-
-            Toast.makeText(ctx,"esta logueado  "+id_actual,Toast.LENGTH_LONG).show();
             ir_a_logueado(ctx.getCurrentFocus());
         }
     }
@@ -38,11 +36,13 @@ public class inicioActivity extends AppCompatActivity {
         super.onRestart();
         Button boton_reg_carga = (Button)findViewById(R.id.boton_registro);
         Button boton_login_out = (Button) findViewById(R.id.iniciar_sesion);
+        Button boton_invitado = (Button) findViewById(R.id.btn_invitado);
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","null");
         if(id_actual.equals("crear")){
 
         }else{
+            boton_invitado.setText("Mi Tienda");
             boton_reg_carga.setText("Agregar producto");
             boton_login_out.setText("Cerrar sesion");
         }
@@ -80,11 +80,18 @@ public class inicioActivity extends AppCompatActivity {
         }
 
     }
-
     /* Boton visitante */
     public void Visitante(View view){
-        Intent cambiarn = new Intent(this, Visitante_inicio.class);
-        startActivity(cambiarn);
+        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
+        String id_actual =sharedPref.getString("id_tienda","null");
+        if(id_actual.equals("crear")){
+            Intent cambiarn = new Intent(this, Visitante_inicio.class);
+            startActivity(cambiarn);
+        }else{
+            Intent logueado = new Intent(this,usuario_logeado.class);
+            startActivity(logueado);
+        }
+
     }
     public void ir_a_logueado (View view){
         Intent logueado = new Intent(this,usuario_logeado.class);

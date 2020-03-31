@@ -54,11 +54,10 @@ public class Visitante extends AppCompatActivity {
         String id_actual =sharedPref.getString("id_tienda","null");
         String longitud = sharedPref.getString("longitud_usuario","no se che");
         valor = getIntent().getExtras().getString("url","no");
-        Toast.makeText(ctx, valor, Toast.LENGTH_LONG).show();
         texto_1 = (TextView) findViewById(R.id.texto_1);
         texto_2 = (TextView) findViewById(R.id.texto_2);
-        texto_1.setText(id_actual);
-        texto_2.setText(longitud);
+        //texto_1.setText(id_actual);
+        //texto_2.setText(longitud);
 
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
@@ -117,7 +116,7 @@ public class Visitante extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
     public void ir_a_localizacion (View view){
-        Intent localizacion = new Intent(this, Localizar.class);
+        Intent localizacion = new Intent(this, inicioActivity.class);
         startActivity(localizacion);
     }
     public void ir_a_logueado(View view){
@@ -125,7 +124,7 @@ public class Visitante extends AppCompatActivity {
         startActivity(login);
     }
     public void ir_a_loca_2 (View view){
-        Intent locali = new Intent(this,buscr_ubucacion.class);
+        Intent locali = new Intent(this,Crear_tienda.class);
         startActivity(locali);
     }
 }
