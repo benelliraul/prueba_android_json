@@ -103,4 +103,8 @@ public class usuario_logeado extends AppCompatActivity {
         Intent agregar_prod = new Intent(this,addProducto_Activity.class);
         startActivity(agregar_prod);
     }
+    public void ir_a_inicio(View view){
+        Intent ir_a_inicio = new Intent (this,inicioActivity.class);
+        startActivity(ir_a_inicio);
+    }
 }

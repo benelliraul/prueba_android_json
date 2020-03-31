@@ -44,6 +44,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static android.graphics.Bitmap.*;
 import static com.example.myapplication.R.drawable.error;
 
 public class Crear_tienda extends AppCompatActivity {
@@ -219,6 +220,7 @@ public class Crear_tienda extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
             } catch (IOException e) {
+                bitmap= Bitmap.createBitmap(imagen.getDrawingCache());//si no funciona hay que borrar esta linea
                 e.printStackTrace();
             }
             Picasso.with(Crear_tienda.this)
@@ -298,7 +300,7 @@ public class Crear_tienda extends AppCompatActivity {
 
     private String convertir_img_string(Bitmap bitmap) {
         ByteArrayOutputStream array = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        bitmap.compress(CompressFormat.JPEG,100,array);
         byte[] imagenByte= array.toByteArray();
         String imagenStrin = Base64.encodeToString(imagenByte,Base64.DEFAULT);
 

@@ -65,12 +65,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="registro_activity"
-                android:text="@string/Registro" />
+                android:text="Agregar Producto" />
 
             <Button
                 android:id="@+id/btn_inicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="ir_a_inicio"
                 android:text="Inicio" />
 
             <androidx.recyclerview.widget.RecyclerView

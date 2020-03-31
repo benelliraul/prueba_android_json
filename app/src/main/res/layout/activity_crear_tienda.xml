@@ -101,7 +101,7 @@
                 android:layout_width="381dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/imagen_a_cargar"
-                app:srcCompat="@drawable/logo_tienda" />
+                app:srcCompat="@drawable/logo_tienda_bmp" />
 
             <Button
                 android:id="@+id/Boton_seleccionar_imagen"
