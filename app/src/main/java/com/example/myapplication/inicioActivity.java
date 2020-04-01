@@ -23,12 +23,14 @@ public class inicioActivity extends AppCompatActivity {
         String id_actual =sharedPref.getString("id_tienda","null");
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        if (id_actual.equals("crear")){
-            Toast.makeText(ctx,"Bienvenido!!",Toast.LENGTH_LONG).show();
+        /*if (id_actual.equals("crear")){
+            //Toast.makeText(ctx,"Bienvenido!!",Toast.LENGTH_LONG).show();
 
         }else {
             ir_a_logueado(ctx.getCurrentFocus());
         }
+
+         */
     }
     @Override
     public void onRestart() {
