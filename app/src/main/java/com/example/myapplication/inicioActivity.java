@@ -60,7 +60,7 @@ public class inicioActivity extends AppCompatActivity {
     /* Boton soy visitante, lleva al main activity */
     public void iniciarSesion_activity(View view){
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
+        String id_actual =sharedPref.getString("id_tienda","crear");
         SharedPreferences.Editor editor = sharedPref.edit();
         if(id_actual.equals("crear")){
             Intent cambiarn = new Intent(this, Registro.class);
@@ -85,7 +85,7 @@ public class inicioActivity extends AppCompatActivity {
     /* Boton visitante */
     public void Visitante(View view){
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
+        String id_actual =sharedPref.getString("id_tienda","crear");
         if(id_actual.equals("crear")){
             Intent cambiarn = new Intent(this, Visitante_inicio.class);
             startActivity(cambiarn);
@@ -101,7 +101,7 @@ public class inicioActivity extends AppCompatActivity {
     }
     public  void crear_tienda (View view){
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
+        String id_actual =sharedPref.getString("id_tienda","crear");
         if(id_actual.equals("crear")){
             Intent crear = new Intent(this,Crear_tienda.class);
             startActivity(crear);

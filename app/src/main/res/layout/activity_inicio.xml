@@ -72,7 +72,7 @@
         android:id="@+id/text_pie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="44dp"
         android:text="RecoLab - Proyecto b_IT 2020"
         android:textColor="#628A63"
         android:textSize="18sp"
