@@ -39,27 +39,12 @@ public class MainActivity extends AppCompatActivity {
         evaluar_id();
     }
 
-    private void evaluar_id() {
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
-        SharedPreferences.Editor editor = sharedPref.edit();
-        if (id_actual.equals("crear")){
-            ir_a_inicio(this.getCurrentFocus());
-
-        }else {
-            ir_a_logueado(this.getCurrentFocus());
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final MainActivity ctx = this;
         ir_a_inicio(ctx.getCurrentFocus());
-
-
-
     }
 
     private void ir_a_inicio(View view) {
@@ -71,7 +56,17 @@ public class MainActivity extends AppCompatActivity {
         Intent login = new Intent(this,Registro.class);
         startActivity(login);
     }
+    private void evaluar_id() {
+        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
+        String id_actual =sharedPref.getString("id_tienda","null");
+        SharedPreferences.Editor editor = sharedPref.edit();
+        if (id_actual.equals("crear")){
+            ir_a_inicio(this.getCurrentFocus());
 
+        }else {
+            ir_a_logueado(this.getCurrentFocus());
+        }
+    }
 }
 
 

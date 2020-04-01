@@ -49,7 +49,7 @@ public class usuario_logeado extends AppCompatActivity {
 
 
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
+        String id_actual =sharedPref.getString("id_tienda","1");
         final String url = "https://benelliraul.pythonanywhere.com/lista_productos/"+id_actual;
         String nombre_rec=sharedPref.getString("nombre","null");
         String direccion_rec =sharedPref.getString("direccion","null");
