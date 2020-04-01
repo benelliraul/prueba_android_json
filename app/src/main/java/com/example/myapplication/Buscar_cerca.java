@@ -32,7 +32,7 @@ public class Buscar_cerca extends AppCompatActivity {
 
 
         Intent buscar = new Intent (this,Visitante.class);
-        buscar.putExtra("url","https://benelliraul.pythonanywhere.com/"+latitud+"/"+longitud+"/"+el_rango);
+        buscar.putExtra("url","https://benelliraul.pythonanywhere.com/cerca/"+latitud+"/"+longitud+"/"+el_rango);
         startActivity(buscar);
 
     }

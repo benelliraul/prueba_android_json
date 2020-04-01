@@ -118,7 +118,7 @@ public class Visitante extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
     public void ir_a_localizacion (View view){
-        Intent localizacion = new Intent(this, inicioActivity.class);
+        Intent localizacion = new Intent(this, Visitante_inicio.class);
         startActivity(localizacion);
     }
     public void ir_a_logueado(View view){

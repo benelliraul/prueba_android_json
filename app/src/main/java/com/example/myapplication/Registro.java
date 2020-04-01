@@ -53,7 +53,7 @@ public class Registro extends AppCompatActivity {
                 String  tag_string_req = "string_req";
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("nombre",nombre);
-                params.put("nombre",nombre_ingresado.getText().toString());
+                //params.put("nombre",nombre_ingresado.getText().toString());
                 params.put("contrasena",contrasena);
                 JSONObject jsonObj = new JSONObject(params);
 
@@ -91,7 +91,7 @@ public class Registro extends AppCompatActivity {
                             if(id_tienda.equals("crear")){
                                 ir_a_inico(ctx.getCurrentFocus());
                             }else {
-                                usuario_log(Objects.requireNonNull(ctx.getCurrentFocus()));
+                                usuario_log(ctx.getCurrentFocus());
                             }
 
 
@@ -145,7 +145,7 @@ public class Registro extends AppCompatActivity {
     }
 
     public void inicio(View view) {
-        Intent inicio = new Intent(this, MainActivity.class);
+        Intent inicio = new Intent(this, Visitante_inicio.class);
         startActivity(inicio);
     }
     public void usuario_log (View view) {
