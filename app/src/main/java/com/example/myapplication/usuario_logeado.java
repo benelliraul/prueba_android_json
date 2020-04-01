@@ -97,6 +97,7 @@ public class usuario_logeado extends AppCompatActivity {
     }
     public void iniciar_productos(ArrayList<producto> dataset){
         MyAdapter myAdapter= new MyAdapter(dataset,ctx);
+        recyclerView.setAdapter(myAdapter);
     }
 
     public void registro_activity(View view) {
